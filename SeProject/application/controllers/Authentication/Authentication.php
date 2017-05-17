@@ -32,6 +32,15 @@ class Authentication extends CI_Controller
 		$this->load->view("authentication/authentication.html", $data);
 	}
 	
+<<<<<<< HEAD
+=======
+	
+	public function index()
+    {
+        $this->load->view("authentication/index.html");
+    }
+	
+>>>>>>> 7b0c205d1f6059cbb66d9b3c9ae3158c94cfeb02
 	public function authenticate()
 	{
 		$resp = array();
@@ -86,9 +95,15 @@ class Authentication extends CI_Controller
 	}
 
 	
+<<<<<<< HEAD
 	public function log_out()
 	{
 		$this->load->view("Mainwindow/index.html");
+=======
+	public function auth_failure_five_times()
+	{
+		$this->load->view("authentication/authentication.html");
+>>>>>>> 7b0c205d1f6059cbb66d9b3c9ae3158c94cfeb02
 	}
 
     public function auth_failure()

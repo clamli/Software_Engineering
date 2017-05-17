@@ -147,7 +147,11 @@ body {
 
     <?PHP echo form_open('Stockaccount/stockaccount/reportLoss','class="login"')?> 
    <!-- <form action="showsuccess" method="post">-->
+<<<<<<< HEAD
       <p class="title">挂失</p>
+=======
+      <p class="title">挂失 or 重新开户</p>
+>>>>>>> 7b0c205d1f6059cbb66d9b3c9ae3158c94cfeb02
       
       账户类型：
       <select type="input" name="typeOfAccount" id="typeOfAccount">
