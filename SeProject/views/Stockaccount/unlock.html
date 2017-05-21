@@ -8,7 +8,7 @@
 	<meta name="description" content="Neon Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Authentication</title>
+	<title>用户账户解锁</title>
 	<base href="<?php echo base_url();?>">
 	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
@@ -74,7 +74,7 @@
 			?>
 			
 			<script type="text/javascript">
-				var div = document.getElementById("sidebar2");
+				var div = document.getElementById("sidebar1");
 				div.setAttribute("class", "opened active");
 			</script>
 			
@@ -165,11 +165,11 @@
 
 			<li>
 
-				<a href="forms-main.html">交易信息查询</a>
+				<a href="forms-main.html">证券账户管理</a>
 			</li>
 			<li class="active">
 
-				<strong>信息查询入口</strong>
+				<strong>更改账户密码</strong>
 			</li>
 		</ol>
 				
@@ -177,76 +177,127 @@
 		
 		
 		<div class="row">
+				
 			<div class="col-md-12">
 				
 				<div class="panel panel-primary" data-collapsed="0">
 					
-					<div class="panel-body" >
-						<!-- <div class="col-md-6" id="warning" style="display: none">						
-							<div class="alert alert-danger" ><strong>Oh snap!</strong> You have tried <?php echo $auth_cnt; ?> times</div>
-						</div>
-						<div class="col-md-6" id="locked" style="display: none">
-							<div class="alert alert-danger" ><strong>Oh snap!</strong> Your account has been locked. Contact admin.</div>
-						</div> -->
-						<div id="warning" style="display: none">
-							<div class="col-sm-4"></div>
-							<div style="font-color: red"> 用户名或密码错误，该用户已尝试<?php echo $auth_cnt; ?>次</div>
-						</div>
+					<div class="panel-body">
 						
-						<div id="locked" style="display: none">
-							<div class="col-sm-4"></div>
-							<div style="color: red"> 用户名或密码错误，该账户已被锁定。请<a href="" style="color: blue; text-decoration:underline">恢复账户</a></div>
-						</div>
-						
-						<div id="nouser" style="display: none">
-							<div class="col-sm-4"></div>
-							<div style="color: red"> 该用户不存在！</a></div>
-						</div>
-						
-						<form method="post" role="form" class="form-horizontal form-groups-bordered" id="" action='index.php/Authentication/Authentication/authenticate'>
-							<div class="col-sm-4">
-								<label for="field-1" class="col-sm-12 control-label">用户名</label>
-							</div>
-							<div class="col-sm-4" >
-								<div class="input-group minimal" >
-									<input type="text" class="form-control" name="username" placeholder="证券账户账号">
-									<span class="input-group-addon"><i class="entypo-user"></i></span>
+						<form method="post" role="form" class="form-horizontal form-groups-bordered" id="" action='index.php/Stockaccount/Stockaccount/unlock'>
+							<div class="form-group" id="idNumber_block">
+								<label for="field-4" class="col-sm-3 control-label">身份证号</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" name="idNumber" placeholder="输入18位身份证号（字母一律大写）">
 								</div>
+								<div class="col-sm-4" id="id_error" style="display: none">
+									<!-- <div class="col-sm-4"></div> -->
+									<div style="color: red; line-height:31px">此身份证号不存在</div>  
+								</div>
+							</div>
+							
+							<div class="form-group" id="username_block">
+								<label for="field-4" class="col-sm-3 control-label">证券账户</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" name="username" placeholder="输入证券账户">
+								</div>
+								<div class="col-sm-4" id="acc_error" style="display: none">
+									<!-- <div class="col-sm-4"></div> -->
+									<div style="color: red; line-height:31px">此证券账户不存在</div>  
+								</div>
+								<div class="col-sm-4" id="acc_no_match_error" style="display: none">
+									<!-- <div class="col-sm-4"></div> -->
+									<div style="color: red; line-height:31px">证券账户和身份证号不匹配</div>  
+								</div>
+							</div>
+							
+							<div class="form-group" id="newpassword_block">
+								<label for="field-4" class="col-sm-3 control-label">新密码</label>
+								<div class="col-sm-5">
+									<input type="password" class="form-control" name="newpassword" placeholder="">
+								</div>
+							</div>
+							
+							<div class="form-group" id="confirmpassword_block">
+								<label for="field-4" class="col-sm-3 control-label">确认密码</label>
+								<div class="col-sm-5">
+									<input type="password" class="form-control" name="confirmpassword" placeholder="">
+								</div>
+								<div class="col-sm-4" id="pass_err" style="display: none">
+									<!-- <div class="col-sm-4"></div> -->
+									<div style="color: red; line-height:31px">确认密码和新密码不匹配</div>  
+								</div>
+								<div class="col-sm-4" id="success" style="display: none">
+									<!-- <div class="col-sm-4"></div> -->
+									<div style="color: green; line-height:31px">修改密码成功！</div>  
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="field-4" class="col-sm-3 control-label"></label>	
+								<div class="col-sm-5">
+									<div align="center"><button type="submit" class="btn btn-success" style="width:200px">确认提交</button></div>
+								</div>
+							</div>
+						
+							<script type="text/javascript">
+								var status = "<?php echo $status?>";
+								if(status == "No_idNumber") {
+									var div = document.getElementById("idNumber_block");
+									div.setAttribute("class", "form-group has-error");
+									var txt = document.getElementById("id_error");
+									txt.style.display="inline";
+								} else if(status == "No_username") {
+									var div = document.getElementById("username_block");
+									div.setAttribute("class", "form-group has-error");
+									var txt = document.getElementById("acc_error");
+									txt.style.display="inline";
+								} else if(status == "Not_match_pass") {
+									var div = document.getElementById("confirmpassword_block");
+									div.setAttribute("class", "form-group has-error");
+									var txt = document.getElementById("pass_err");
+									txt.style.display="inline";
+								} else if(status == "Not_match_id_acc") {
+									var div1 = document.getElementById("username_block");
+									div1.setAttribute("class", "form-group has-error");
+									var txt = document.getElementById("acc_no_match_error");
+									txt.style.display="inline";
+								} else if(status == "Match") {
+									var idNumber = "<?php echo $idNumber?>";
+									var username = "<?php echo $username?>";
+									var div1 = document.getElementById("idNumber_block");
+									var div2 = document.getElementById("username_block");
+									var div3 = document.getElementById("newpassword_block");
+									var div4 = document.getElementById("confirmpassword_block");
+									div1.setAttribute("class", "form-group has-success");
+									div2.setAttribute("class", "form-group has-success");
+									div3.setAttribute("class", "form-group has-success");
+									div4.setAttribute("class", "form-group has-success");
+									var txt = document.getElementById("success");
+									txt.style.display="inline";
+									document.getElementById("idNumber").setAttribute("placeholder", idNumber);
+									document.getElementById("username").setAttribute("placeholder", password);
+									//document.getElementById("newpassword").setAttribute("placeholder", newpassword);
+									//document.getElementById("confirmpassword").setAttribute("placeholder", confirmpassword);
+								}
+							</script>
+							
+							<!-- <div class="form-group has-warning">
+								<label for="field-5" class="col-sm-3 control-label">Warning field</label>
 								
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="field-5" placeholder="Placeholder">
+								</div>
 							</div>
 							
-							<br>
-							<br>
-							<br>
-							<div class="col-sm-4" >
-								<label for="field-1" class="col-sm-12 control-label">密码</label>
-							</div>
-							<div class="col-sm-4" >
-								<div class="input-group minimal">	
-									<input type="password" class="form-control" name="password" placeholder="证券账户密码">
-									<span class="input-group-btn">
-										<button class="btn btn-success" type="submit">Go!</button>
-									</span>
-									
-								</div>	
-							</div>
+							<div class="form-group has-success">
+								<label for="field-6" class="col-sm-3 control-label">Success field</label>
+								
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="field-6" placeholder="Placeholder">
+								</div>
+							</div> -->
 							
-							<script>
-								var auth_cnt = <?php echo $auth_cnt?>;
-								var is_locked = <?php echo $locked?>;
-								if(is_locked){
-									var ele2=document.getElementById("locked");
-									ele2.style.display="inline";
-								}	
-								else if( auth_cnt > 0 ) {	
-									var ele=document.getElementById("warning");
-									ele.style.display="inline";
-								}
-								else if( auth_cnt == -1 ) {
-									var ele3=document.getElementById("nouser");
-									ele3.style.display="inline";
-								}
-							</script>	
 						</form>
 						
 					</div>
@@ -254,6 +305,38 @@
 				</div>
 			
 			</div>
+				
+				
+				
+				<!-- <div class="panel panel-primary" data-collapsed="0">
+					<form method="post" role="form" class="form-horizontal form-groups-bordered" id="" action='index.php/Stockaccount/Stockaccount/'>
+						<div class="form-group has-success">
+							<label for="field-6" class="col-sm-3 control-label">身份证号</label>
+							
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="field-6" placeholder="18位身份证号码">
+							</div>
+						</div>
+						
+						
+						<script>
+							var auth_cnt = <?php echo $auth_cnt?>;
+							var is_locked = <?php echo $locked?>;
+							if(is_locked){
+								var ele2=document.getElementById("locked");
+								ele2.style.display="inline";
+							}	
+							else if( auth_cnt > 0 ) {	
+								var ele=document.getElementById("warning");
+								ele.style.display="inline";
+							}
+							else if( auth_cnt == -1 ) {
+								var ele3=document.getElementById("nouser");
+								ele3.style.display="inline";
+							}
+						</script>	
+					</form>
+				</div> -->
 		</div>
 		
 		

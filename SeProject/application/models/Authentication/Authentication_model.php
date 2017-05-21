@@ -34,6 +34,9 @@ class Authentication_model extends CI_Model
          * 对明文密码进行加密，然后与数据库中的密码进行对比
          * 若两者匹配，则返回true，表示登陆密码正确
          */
+		if (!isset($row)) {
+			return "none";
+		}
         if (isset($row) && ($row->statOfAccount == "normal") && (/*crypt*/($password/*, $this->salt*/) == $row->accPassword)) {
 			
 			/* save session of current user */

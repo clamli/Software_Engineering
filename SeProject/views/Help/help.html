@@ -8,7 +8,7 @@
 	<meta name="description" content="Neon Admin Panel" />
 	<meta name="author" content="" />
 
-	<title>Authentication</title>
+	<title>常见问题</title>
 	<base href="<?php echo base_url();?>">
 	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
@@ -73,15 +73,10 @@
 				echo $str;
 			?>
 			
-			<script type="text/javascript">
-				var div = document.getElementById("sidebar2");
-				div.setAttribute("class", "opened active");
-			</script>
-			
 		</div>
 
 	</div>
-
+	
 	<div class="main-content">
 				
 		<div class="row">
@@ -164,100 +159,76 @@
 			</li>
 
 			<li>
-
-				<a href="forms-main.html">交易信息查询</a>
-			</li>
-			<li class="active">
-
-				<strong>信息查询入口</strong>
+				<strong>常见问题</strong>
 			</li>
 		</ol>
 				
-		<br />
-		
-		
-		<div class="row">
-			<div class="col-md-12">
 				
-				<div class="panel panel-primary" data-collapsed="0">
-					
-					<div class="panel-body" >
-						<!-- <div class="col-md-6" id="warning" style="display: none">						
-							<div class="alert alert-danger" ><strong>Oh snap!</strong> You have tried <?php echo $auth_cnt; ?> times</div>
-						</div>
-						<div class="col-md-6" id="locked" style="display: none">
-							<div class="alert alert-danger" ><strong>Oh snap!</strong> Your account has been locked. Contact admin.</div>
-						</div> -->
-						<div id="warning" style="display: none">
-							<div class="col-sm-4"></div>
-							<div style="font-color: red"> 用户名或密码错误，该用户已尝试<?php echo $auth_cnt; ?>次</div>
-						</div>
-						
-						<div id="locked" style="display: none">
-							<div class="col-sm-4"></div>
-							<div style="color: red"> 用户名或密码错误，该账户已被锁定。请<a href="" style="color: blue; text-decoration:underline">恢复账户</a></div>
-						</div>
-						
-						<div id="nouser" style="display: none">
-							<div class="col-sm-4"></div>
-							<div style="color: red"> 该用户不存在！</a></div>
-						</div>
-						
-						<form method="post" role="form" class="form-horizontal form-groups-bordered" id="" action='index.php/Authentication/Authentication/authenticate'>
-							<div class="col-sm-4">
-								<label for="field-1" class="col-sm-12 control-label">用户名</label>
-							</div>
-							<div class="col-sm-4" >
-								<div class="input-group minimal" >
-									<input type="text" class="form-control" name="username" placeholder="证券账户账号">
-									<span class="input-group-addon"><i class="entypo-user"></i></span>
-								</div>
-								
-							</div>
-							
-							<br>
-							<br>
-							<br>
-							<div class="col-sm-4" >
-								<label for="field-1" class="col-sm-12 control-label">密码</label>
-							</div>
-							<div class="col-sm-4" >
-								<div class="input-group minimal">	
-									<input type="password" class="form-control" name="password" placeholder="证券账户密码">
-									<span class="input-group-btn">
-										<button class="btn btn-success" type="submit">Go!</button>
-									</span>
-									
-								</div>	
-							</div>
-							
-							<script>
-								var auth_cnt = <?php echo $auth_cnt?>;
-								var is_locked = <?php echo $locked?>;
-								if(is_locked){
-									var ele2=document.getElementById("locked");
-									ele2.style.display="inline";
-								}	
-								else if( auth_cnt > 0 ) {	
-									var ele=document.getElementById("warning");
-									ele.style.display="inline";
-								}
-								else if( auth_cnt == -1 ) {
-									var ele3=document.getElementById("nouser");
-									ele3.style.display="inline";
-								}
-							</script>	
-						</form>
-						
-					</div>
-				
-				</div>
-			
+	<div class="panel panel-info" data-collapsed="1">
+		<div class="panel-heading">
+			<div class="panel-title">如何为用户注册证券账户？</div>
+			<div class="panel-options">
+				<a data-rel="collapse"><i class="entypo-down-open"></i></a>
 			</div>
 		</div>
-		
-		
+		<div class="panel-body">
+			<div style="font-size:14px">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				在左侧的控制面板中依次选择<b>证券账户管理->用户开户</b>，而后根据用户想要开立的账户类型，选择开立
+				<a href="index.php/Stockaccount/Stockaccount/indexPerson" style="text-decoration:underline;"><b>自然人账户开户</b></a>或
+				<a href="index.php/Stockaccount/Stockaccount/indexLegal" style="text-decoration:underline;"><b>法人账户开户</b></a>；在页面中填写必要的信息后即可开户。
+			</div>
+		</div>
 	</div>
+	<div class="panel panel-info" data-collapsed="1">
+		<div class="panel-heading">
+			<div class="panel-title">如何为用户注销证券账户？</div>
+			<div class="panel-options">
+				<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div style="font-size:14px">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				在左侧的控制面板中依次选择<b>证券账户管理->
+				<a href="index.php/Stockaccount/Stockaccount/cancelAccount" style="text-decoration:underline;">用户注销</a></b>&nbsp。
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-info" data-collapsed="1">
+		<div class="panel-heading">
+			<div class="panel-title">如何为用户挂失并重新开户？</div>
+			<div class="panel-options">
+				<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div style="font-size:14px">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				在左侧的控制面板中依次选择<b>证券账户管理->
+				<a href="index.php/Stockaccount/Stockaccount/reportLoss" style="text-decoration:underline;">用户挂失/重新开户</a></b>&nbsp。
+				管理员需建议用户挂失完立即重新开户。
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-info" data-collapsed="1">
+		<div class="panel-heading">
+			<div class="panel-title">用户由于忘记密码，导致证券账户被锁定怎么办？</div>
+			<div class="panel-options">
+				<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div style="font-size:14px">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				被锁定账户原则上为输错五次密码的账户，建议用户更改密码。在左侧的控制面板中依次选择<b>证券账户管理->
+				<a href="index.php/Stockaccount/Stockaccount/indexPerson" style="text-decoration:underline;">更改账户密码</a></b>&nbsp。
+				验证用户身份信息，设定新密码后为用户更新信息。
+			</div>
+		</div>
+
+	</div>
+
 
 		
 	<div id="chat" class="fixed" data-current-user="Art Ramadani" data-order-by-status="1" data-max-chat-history="25">

@@ -29,11 +29,7 @@ class Searchmessage extends CI_Controller
 		$this->load->view("Searchmessage/tables-datatable.html", $data);
 	}
 	
-<<<<<<< HEAD
 	/* initial status, no message return */
-=======
-	
->>>>>>> 7b0c205d1f6059cbb66d9b3c9ae3158c94cfeb02
 	public function index($username)
     {
 		// $this->session->sess_destroy();

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Neon Admin Panel" />
+	<meta name="author" content="" />
+
+	<title>自然人开户</title>
+	<base href="<?php echo base_url();?>">
+	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/css/neon-core.css">
+	<link rel="stylesheet" href="assets/css/neon-theme.css">
+	<link rel="stylesheet" href="assets/css/neon-forms.css">
+	<link rel="stylesheet" href="assets/css/custom.css">
+
+	<script src="assets/js/jquery-1.11.0.min.js"></script>
+	<script>$.noConflict();</script>
+
+	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+<style>
+
+
+.error {color: #ff0000;}</style>
+<script type="text/javascript">
+  function jump(){
+    var obj=document.getElementById("typeOfAccount");
+    if(obj.value==="person")
+      window.open('http://localhost/SeProject/index.php/Stockaccount/Stockaccount/indexPerson');
+    else
+      window.open('http://localhost/SeProject/index.php/Stockaccount/Stockaccount/indexLegal');
+    }
+
+</script> 
+</head>
+<body class="page-body" data-url="http://neon.dev">
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	<div class="sidebar-menu">
+
+		<div class="sidebar-menu-inner">
+			
+			<header class="logo-env">
+
+				<!-- logo -->
+				<div class="logo">
+					<a href="index.html">
+						<img src="assets/images/logo@2x.png" width="120" alt="" />
+					</a>
+				</div>
+
+				<!-- logo collapse icon -->
+				<div class="sidebar-collapse">
+					<a href="#" class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+						<i class="entypo-menu"></i>
+					</a>
+				</div>
+
+								
+				<!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+				<div class="sidebar-mobile-menu visible-xs">
+					<a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+						<i class="entypo-menu"></i>
+					</a>
+				</div>
+
+			</header>
+			
+			<?php
+				$file_path = "views/Mainwindow/sidebar.html";
+				$str=file_get_contents($file_path);
+				echo $str;
+			?>
+			
+			<script type="text/javascript">
+				var div = document.getElementById("sidebar1");
+				div.setAttribute("class", "opened active");
+			</script>
+			
+			
+		</div>
+
+	</div>
+
+	<div class="main-content">
+				
+		<div class="row">
+		
+			<!-- Profile Info and Notifications -->
+			<div class="col-md-6 col-sm-8 clearfix">
+		
+				<ul class="user-info pull-left pull-none-xsm">
+		
+					<!-- Profile Info -->
+					<li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
+		
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
+							John Henderson
+						</a>
+		
+						<ul class="dropdown-menu">
+		
+							<!-- Reverse Caret -->
+							<li class="caret"></li>
+		
+							<!-- Profile sub-links -->
+							<li>
+								<a href="extra-timeline.html">
+									<i class="entypo-user"></i>
+									Edit Profile
+								</a>
+							</li>
+		
+							<li>
+								<a href="mailbox.html">
+									<i class="entypo-mail"></i>
+									Inbox
+								</a>
+							</li>
+		
+							<li>
+								<a href="extra-calendar.html">
+									<i class="entypo-calendar"></i>
+									Calendar
+								</a>
+							</li>
+		
+							<li>
+								<a href="#">
+									<i class="entypo-clipboard"></i>
+									Tasks
+								</a>
+							</li>
+						</ul>
+					</li>
+		
+				</ul>
+			</div>
+		
+		
+			<!-- Raw Links -->
+			<div class="col-md-6 col-sm-4 clearfix hidden-xs">
+		
+				<ul class="list-inline links-list pull-right">
+					<li>
+						<a href="index.php/Mainwindow/Mainwindow/index">
+							Log Out <i class="entypo-logout right"></i>
+						</a>
+					</li>
+				</ul>
+		
+			</div>
+		
+		</div>
+		
+		<hr />
+		
+		<ol class="breadcrumb bc-3" >
+			<li>
+				<a href="index.html"><i class="fa-home"></i>主界面</a>
+			</li>
+
+			<li>
+
+				<a href="forms-main.html">证券账户管理</a>
+			</li>
+			<li>
+
+				<a href="forms-main.html">用户开户</a>
+			</li>
+			<li class="active">
+
+				<strong>自然人账户开户</strong>
+			</li>
+		</ol>
+					
+					
+		<br />
+		
+		
+		
+			<div class="row">
+				<div class="col-md-12">
+					
+					<div class="panel panel-primary" data-collapsed="0">
+									
+						<div class="panel-body">
+							
+				<form role="form" method="post" class="form-horizontal form-groups-bordered validate" action=""> 
+		<!--<?PHP echo form_open('Stockaccount/stockaccount/reportLoss','class="form-horizontal form-groups-bordered validate"')?>-->
+
+<!-- 							<div class="panel-title">
+							必填
+							</div> -->
+							<div class="form-group">
+								<label for="field-1" class="col-sm-4 control-label">个人股票账户号码</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="accountId" value="<?php echo set_value('accountId'); ?>"  id="field-1" placeholder=""/>
+								</div>
+								<?php echo form_error('accountId');?>
+								<br /><br /><br />
+							
+								<label for="field-2" class="col-sm-4 control-label">账户密码</label>
+								
+								<div class="col-sm-4">
+									<input type="password" class="form-control" name="accPassword" value="<?php echo set_value('accPassword'); ?>"  id="field-2" placeholder=""/>
+								</div>
+								<?php echo form_error('accPassword');?>
+								<br /><br /><br />
+							
+								<label for="field-3" class="col-sm-4 control-label">登记日期</label>
+								
+								<div class="col-sm-4">
+									<input type="date" class="form-control" name="rgstDate"  value="<?php echo set_value('rgstDate'); ?>"  id="field-3" placeholder="格式如2017-5-5"/>
+								</div>
+								<!-- <div class="col-sm-4">
+									<div class="input-group">
+										<input type="text" class="form-control datepicker" data-format="D, dd MM yyyy">
+										
+										<div class="input-group-addon">
+											<a href="#"><i class="entypo-calendar"></i></a>
+										</div>
+									</div>
+								</div> -->								
+								
+								
+								
+								<?php echo form_error('rgstDate');?>
+								<br /><br /><br />
+							
+								<label for="field-4" class="col-sm-4 control-label">本人姓名</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="userName" value="<?php echo set_value('userName'); ?>" id="field-4" placeholder=""/>
+								</div>
+								<?php echo form_error('userName');?>
+								<br /><br /><br />
+							
+								<label for="field-5" class="col-sm-4 control-label">本人性别</label>
+								
+								<div class="col-sm-4">
+									<select class="form-control" type="input" name="userGender" value="<?php echo set_value('userGender'); ?>" id="field-5">
+										<option value="male">男</option>
+										<option value="female">女</option>	
+									</select>
+									
+								</div>
+								<br /><br /><br />
+							
+								<label for="field-6" class="col-sm-4 control-label">本人身份证号码</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="idNumber" value="<?php echo set_value('idNumber'); ?>"  id="field-6" placeholder=""/>
+								</div>
+								<?php echo form_error('idNumber');?>
+								<br /><br /><br />
+							
+								<label for="field-7" class="col-sm-4 control-label">本人家庭地址</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="houAddress" value="<?php echo set_value('houAddress'); ?>"  id="field-7" placeholder=""/>
+								</div>
+								<?php echo form_error('houAddress');?>
+								<br /><br /><br />
+							
+								<label for="field-8" class="col-sm-4 control-label">本人职业</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="perOccupation" value="<?php echo set_value('perOccupation'); ?>"  id="field-8" placeholder=""/>
+								</div>
+								<?php echo form_error('perOccupation');?>
+								<br /><br /><br />
+								
+								<label for="field-9" class="col-sm-4 control-label">本人学历</label>
+								
+								<div class="col-sm-4">
+									<select class="form-control" type="input" name="perEducation" value="<?php echo set_value('perEducation'); ?>"id="field-9">
+										<option value="phd">博士</option>
+										<option value="master">硕士</option>
+										<option value="undergraduate">本科</option>
+										<option value="professional">专科</option>
+										<option value="others">其他</option>
+									</select>
+									
+								</div>
+								<br /><br /><br />
+								<label for="field-10" class="col-sm-4 control-label">本人工作单位</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="workPlace" value="<?php echo set_value('workPlace'); ?>"  id="field-10" placeholder=""/>
+								</div>
+								<?php echo form_error('workPlace');?>
+								
+								<br /><br /><br />
+
+								<label for="field-11" class="col-sm-4 control-label">本人联系电话</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="phoneNumber" value="<?php echo set_value('phoneNumber'); ?>"  id="field-11" placeholder=""/>
+								</div>
+								<?php echo form_error('phoneNumber');?>
+							</div>
+<!-- 							<div class="panel-title">
+							选填
+							</div> -->
+							<div class="form-group">
+								<label for="field-12" class="col-sm-4 control-label">代办人身份证(选填)</label>
+								
+								<div class="col-sm-4">
+									<input type="input" class="form-control" name="subsIdNumber"  value="<?php echo set_value('subsIdNumber'); ?>"id="field-12" placeholder=""/>
+								</div>
+								<?php echo form_error('subsIdNumber');?>
+							</div>
+
+							<br>
+							<div class="col-sm-4">
+								<label />
+							</div>
+							
+							<div class="col-sm-4" align="center">
+								<button type="submit" class="btn btn-success" style="width:150px;">开户</button>
+								
+							</div>
+
+						</div>
+					
+					</div>		
+							
+				</div>
+			</div>
+		
+						
+		</form>
+	</div>
+
+	
+</div>
+
+	<!-- Imported styles on this page -->
+	<link rel="stylesheet" href="assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+	<link rel="stylesheet" href="assets/js/rickshaw/rickshaw.min.css">
+
+	<!-- Bottom scripts (common) -->
+	<script src="assets/js/gsap/main-gsap.js"></script>
+	<script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/joinable.js"></script>
+	<script src="assets/js/resizeable.js"></script>
+	<script src="assets/js/neon-api.js"></script>
+	<script src="assets/js/jquery.validate.min.js"></script>
+	<script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="assets/js/select2/select2.min.js"></script>
+	<script src="assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+	<script src="assets/js/bootstrap-datepicker.js"></script>
+	<script src="assets/js/bootstrap-timepicker.min.js"></script>
+	<script src="assets/js/daterangepicker/moment.min.js"></script>
+	<script src="assets/js/daterangepicker/daterangepicker.js"></script>
+
+
+
+	<!-- Imported scripts on this page -->
+	<script src="assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+	<script src="assets/js/jquery.sparkline.min.js"></script>
+	<script src="assets/js/rickshaw/vendor/d3.v3.js"></script>
+	<script src="assets/js/rickshaw/rickshaw.min.js"></script>
+	<script src="assets/js/raphael-min.js"></script>
+	<script src="assets/js/morris.min.js"></script>
+	<script src="assets/js/toastr.js"></script>
+	<script src="assets/js/neon-chat.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="assets/js/neon-custom.js"></script>
+
+
+	<!-- Demo Settings -->
+	<script src="assets/js/neon-demo.js"></script>
+
+
+</body>
+</html>
